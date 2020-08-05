@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/:search", (req, res, next) => {
-  HouseModel.find({ address: req.params.search })
+  HouseModel.find({ fullAddress: req.params.search })
     .then((houses) => {
       res.status(200).json(houses);
     })
@@ -17,10 +17,8 @@ router.get("/:search", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  const { category, address } = req.body;
-  const location = {};
-  location.coordinates = req.body.coordinates;
-  HouseModel.create({ category, address, location })
+  console.log("hey", req.body);
+  HouseModel.create(req.body)
     .then((newHouse) => res.status(200).json(newHouse))
     .catch((error) => res.status(500).json(error));
 });

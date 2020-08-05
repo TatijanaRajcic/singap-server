@@ -8,15 +8,12 @@ const houseSchema = new Schema({
       enum: ["Condo", "House", "Social Housing"],
     },
   ],
-  address: String,
-  location: {
-    type: {
-      type: String,
-      default: "Point",
-    },
-    coordinates: {
-      type: [Number],
-    },
+  fullAddress: String,
+  blocNumber: String,
+  textAddress: String,
+  building: String,
+  coordinates: {
+    type: [Number],
   },
   leases: [
     {

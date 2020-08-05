@@ -15,6 +15,7 @@ const houseSchema = new Schema({
   coordinates: {
     type: [Number],
   },
+  unitNumbers: String,
   leases: [
     {
       type: Schema.Types.ObjectId,

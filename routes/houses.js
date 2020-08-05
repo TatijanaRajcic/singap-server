@@ -3,16 +3,14 @@ const router = express.Router();
 const HouseModel = require("../models/House");
 
 router.get("/", (req, res, next) => {
-  HouseModel.find()
+  let myQuery = {};
+  if (req.query.search) {
+    let fullQuery = JSON.parse(req.query.search);
+    myQuery.fullAddress = fullQuery.fullAddress;
+    myQuery.unitNumbers = fullQuery.unitNumbers;
+  }
+  HouseModel.find(myQuery)
     .then((houses) => res.status(200).json(houses))
-    .catch((error) => res.status(500).json(error));
-});
-
-router.get("/:search", (req, res, next) => {
-  HouseModel.find({ fullAddress: req.params.search })
-    .then((houses) => {
-      res.status(200).json(houses);
-    })
     .catch((error) => res.status(500).json(error));
 });
 

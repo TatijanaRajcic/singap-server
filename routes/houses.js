@@ -14,6 +14,13 @@ router.get("/", (req, res, next) => {
     .catch((error) => res.status(500).json(error));
 });
 
+router.get("/:id", (req, res, next) => {
+  HouseModel.findById(req.params.id)
+    .populate("leases")
+    .then((house) => res.status(200).json(house))
+    .catch((error) => res.status(500).json(error));
+});
+
 router.post("/", (req, res, next) => {
   HouseModel.create(req.body)
     .then((newHouse) => res.status(200).json(newHouse))

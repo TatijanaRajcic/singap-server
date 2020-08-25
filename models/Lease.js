@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const leaseSchema = new Schema({
-  house: {
+  houseId: {
     type: Schema.Types.ObjectId,
     ref: "House",
   },
@@ -10,12 +10,24 @@ const leaseSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  rate: Number,
+  discrimination: {
+    type: Boolean,
+    default: false,
+  },
+  abuseOnRent: {
+    type: Boolean,
+    default: false,
+  },
+  abuseOnDeposit: {
+    type: Boolean,
+    default: false,
+  },
+  rating: { type: String, enum: ["good", "bad", "neutral"] },
   leasePicture: {
     type: String,
-    default:
-      "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+    required: true,
   },
+  description: String,
   isVerified: {
     type: Boolean,
     default: false,

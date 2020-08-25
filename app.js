@@ -38,10 +38,12 @@ app.use(
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const houseRouter = require("./routes/houses");
+const leaseRouter = require("./routes/leases");
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/houses", houseRouter);
+app.use("/api/leases", leaseRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use("*", (req, res, next) => {

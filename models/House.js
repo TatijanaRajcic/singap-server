@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const houseSchema = new Schema({
-  category: [
-    {
-      type: String,
-      enum: ["Condo", "House", "Social Housing"],
-    },
-  ],
+  category: {
+    type: String,
+    enum: ["Condo", "House", "Social Housing"],
+  },
+
   fullAddress: String,
   blocNumber: String,
   textAddress: String,

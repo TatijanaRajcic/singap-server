@@ -15,7 +15,6 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  console.log("hey", req.body);
   HouseModel.create(req.body)
     .then((newHouse) => res.status(200).json(newHouse))
     .catch((error) => res.status(500).json(error));
